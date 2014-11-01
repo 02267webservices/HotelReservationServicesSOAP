@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
   <services>
+    <service name="HotelReservationService">
+      <implementation-class>ws.HotelReservationService</implementation-class>
+      <wsdl-url>file:/Users/khannoori/NetBeansProjects/HotelReservationServicesSOAP/src/java/ws/HotelReservation.wsdl</wsdl-url>
+      <local-wsdl-file>HotelReservationWrapper.wsdl</local-wsdl-file>
+      <service-name>HotelReservationServicesService</service-name>
+      <port-name>HotelReservationServicesPort</port-name>
+      <package-name>hotelreservationservices</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <use-provider>false</use-provider>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>target</wsimport-option-name>
+          <wsimport-option-value>2.1</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </service>
   </services>
   <clients/>
   <jsr109>true</jsr109>
