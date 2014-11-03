@@ -13,19 +13,28 @@
                     <xsd:element name="ExpirationYear" type="xsd:dateTime"></xsd:element>
                 </xsd:sequence>
             </xsd:complexType>
-            <xsd:complexType name="HotelsNameType">
+            <xsd:complexType name="HotelType">
                 <xsd:sequence>
-                    <xsd:element name="name" type="xsd:string" maxOccurs="unbounded"></xsd:element>
+                    <xsd:element name="name" type="xsd:string" maxOccurs="1"></xsd:element>
+                    <xsd:element name="address" type="xsd:string"></xsd:element>
+                    <xsd:element name="bookingNr" type="xsd:int"></xsd:element>
+                    <xsd:element name="price" type="xsd:double"></xsd:element>
+                    <xsd:element name="paymentGuarantee" type="xsd:boolean"></xsd:element>
                 </xsd:sequence>
             </xsd:complexType>
             <xsd:element name="creditcardInformationElement" type="tns:CreditcardInformationType"></xsd:element>
-            <xsd:element name="hotelsNameElement" type="tns:HotelsNameType"></xsd:element>
+            <xsd:element name="hotelElement" type="tns:HotelType"></xsd:element>
             <xsd:complexType name="faultType">
                 <xsd:sequence>
                     <xsd:element name="creditcardInfo" type="tns:CreditcardInformationType"></xsd:element>
                 </xsd:sequence>
             </xsd:complexType>
             <xsd:element name="fault" type="tns:faultType"></xsd:element>
+            <xsd:complexType name="HotelsType">
+                <xsd:sequence>
+                    <xsd:element name="hotels" type="tns:HotelType" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
         </xsd:schema>
     </types>
     <message name="getHotelRequest">
@@ -34,7 +43,7 @@
         <part name="departureDate" type="xsd:dateTime"/>
     </message>
     <message name="getHotelResponse">
-        <part name="HotelsNameArray" type="tns:HotelsNameType"/>
+        <part name="HotelsNameArray" type="tns:HotelType"/>
         <part name="addressOfHotel" type="xsd:string"/>
         <part name="bookingNr" type="xsd:int"/>
         <part name="priceForWholeStay" type="xsd:float"/>
@@ -53,7 +62,7 @@
         <part name="part1" type="xsd:string"/>
     </message>
     <message name="cancellingOfTheHotelFault">
-        <part name="part1" type="tns:faultType"/>
+        <part name="part1" element="tns:fault"/>
     </message>
     <portType name="HotelReservationServices">
         <operation name="getHotel">
@@ -79,11 +88,49 @@
         <operation name="getHotel">
             <soap:operation/>
             <input name="input1">
-                <soap:body use="literal" namespace="http://HotelReservationServices"/>
+                <soap:body use="literal" namespace="http://ws"/>
             </input>
             <output name="output1">
-                <soap:body use="literal" namespace="http://HotelReservationServices"/>
+                <soap:body use="literal" namespace="http://ws"/>
             </output>
         </operation>
     </binding>
+    <binding name="HotelReservationServicesbookHotelBinding" type="tns:HotelReservationServicesbookHotel">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="bookHotel">
+            <soap:operation/>
+            <input name="input1">
+                <soap:body use="literal" namespace="http://ws"/>
+            </input>
+            <output name="output1">
+                <soap:body use="literal" namespace="http://ws"/>
+            </output>
+        </operation>
+    </binding>
+    <binding name="HotelReservationServicescancelHotelBinding" type="tns:HotelReservationServicescancelHotel">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="cancelHotel">
+            <soap:operation/>
+            <input name="input1">
+                <soap:body use="literal" namespace="http://ws"/>
+            </input>
+            <output name="output1">
+                <soap:body use="literal" namespace="http://ws"/>
+            </output>
+            <fault name="fault1">
+                <soap:fault name="fault1" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <service name="HotelReservationService">
+        <port name="HotelReservationServicesBindingPort" binding="tns:HotelReservationServicesBinding">
+            <soap:address location="http://localhost:${HttpDefaultPort}/service"/>
+        </port>
+        <port name="HotelReservationServicesbookHotelBindingPort" binding="tns:HotelReservationServicesbookHotelBinding">
+            <soap:address location="http://localhost:${HttpDefaultPort}/service"/>
+        </port>
+        <port name="HotelReservationServicescancelHotelBindingPort" binding="tns:HotelReservationServicescancelHotelBinding">
+            <soap:address location="http://localhost:${HttpDefaultPort}/service"/>
+        </port>
+    </service>
 </definitions>

@@ -43,7 +43,7 @@ public interface HotelReservationServices {
         @WebParam(name = "departureDate", partName = "departureDate")
         XMLGregorianCalendar departureDate,
         @WebParam(name = "HotelsNameArray", mode = WebParam.Mode.OUT, partName = "HotelsNameArray")
-        Holder<HotelsNameType> hotelsNameArray,
+        Holder<HotelType> hotelsNameArray,
         @WebParam(name = "addressOfHotel", mode = WebParam.Mode.OUT, partName = "addressOfHotel")
         Holder<String> addressOfHotel,
         @WebParam(name = "bookingNr", mode = WebParam.Mode.OUT, partName = "bookingNr")

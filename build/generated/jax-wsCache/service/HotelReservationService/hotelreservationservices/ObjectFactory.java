@@ -24,8 +24,8 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _HotelElement_QNAME = new QName("http://HotelReservationServices", "hotelElement");
     private final static QName _Fault_QNAME = new QName("http://HotelReservationServices", "fault");
-    private final static QName _HotelsNameElement_QNAME = new QName("http://HotelReservationServices", "hotelsNameElement");
     private final static QName _CreditcardInformationElement_QNAME = new QName("http://HotelReservationServices", "creditcardInformationElement");
 
     /**
@@ -44,19 +44,36 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link HotelsNameType }
-     * 
-     */
-    public HotelsNameType createHotelsNameType() {
-        return new HotelsNameType();
-    }
-
-    /**
      * Create an instance of {@link FaultType }
      * 
      */
     public FaultType createFaultType() {
         return new FaultType();
+    }
+
+    /**
+     * Create an instance of {@link HotelType }
+     * 
+     */
+    public HotelType createHotelType() {
+        return new HotelType();
+    }
+
+    /**
+     * Create an instance of {@link HotelsType }
+     * 
+     */
+    public HotelsType createHotelsType() {
+        return new HotelsType();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HotelType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://HotelReservationServices", name = "hotelElement")
+    public JAXBElement<HotelType> createHotelElement(HotelType value) {
+        return new JAXBElement<HotelType>(_HotelElement_QNAME, HotelType.class, null, value);
     }
 
     /**
@@ -66,15 +83,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://HotelReservationServices", name = "fault")
     public JAXBElement<FaultType> createFault(FaultType value) {
         return new JAXBElement<FaultType>(_Fault_QNAME, FaultType.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link HotelsNameType }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://HotelReservationServices", name = "hotelsNameElement")
-    public JAXBElement<HotelsNameType> createHotelsNameElement(HotelsNameType value) {
-        return new JAXBElement<HotelsNameType>(_HotelsNameElement_QNAME, HotelsNameType.class, null, value);
     }
 
     /**
