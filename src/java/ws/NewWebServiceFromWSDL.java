@@ -78,12 +78,13 @@ public class NewWebServiceFromWSDL {
         throw new Exception("Invalid booking number: " + booking + ".");
         
     }
+
     
     // --------
-    
+  /* 
     public void getHotel(java.lang.String city, javax.xml.datatype.XMLGregorianCalendar arrivalDate, javax.xml.datatype.XMLGregorianCalendar departureDate, javax.xml.ws.Holder<hotelreservationservices.HotelType> hotelsNameArray, javax.xml.ws.Holder<java.lang.String> addressOfHotel, javax.xml.ws.Holder<Integer> bookingNr, javax.xml.ws.Holder<Float> priceForWholeStay) {
         //TODO implement this method
         throw new UnsupportedOperationException("Not implemented yet.");
     }
-    
+ */   
 }
