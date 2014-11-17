@@ -43,25 +43,25 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/dk/dtu/imm/fastmoney"/>
         <delete dir="${build.generated.dir}/jax-wsCache/BankService"/>
     </target>
-    <target name="wsimport-service-NewWebServiceFromWSDL" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/service/NewWebServiceFromWSDL"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/service/NewWebServiceFromWSDL" destdir="${build.generated.dir}/jax-wsCache/service/NewWebServiceFromWSDL" wsdl="${basedir}/${conf-dir}xml-resources/web-services/NewWebServiceFromWSDL/wsdl/HotelReservation.wsdl" catalog="catalog.xml" extension="true" verbose="true" xnocompile="true" target="2.1">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-services/NewWebServiceFromWSDL/wsdl/HotelReservation.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/service/NewWebServiceFromWSDL"/>
+    <target name="wsimport-service-HotelReservation" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/service/HotelReservation"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/service/HotelReservation" destdir="${build.generated.dir}/jax-wsCache/service/HotelReservation" wsdl="${basedir}/${conf-dir}xml-resources/web-services/HotelReservation/wsdl/HotelReservation.wsdl" catalog="catalog.xml" extension="true" verbose="true" xnocompile="true" target="2.1">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-services/HotelReservation/wsdl/HotelReservation.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/service/HotelReservation"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/service/NewWebServiceFromWSDL">
+            <fileset dir="${build.generated.dir}/jax-wsCache/service/HotelReservation">
                 <include name="**/*.java"/>
             </fileset>
         </copy>
-        <copy todir="${build.web.dir}/WEB-INF/wsdl/NewWebServiceFromWSDL">
-            <fileset dir="${basedir}/${conf-dir}xml-resources/web-services/NewWebServiceFromWSDL/wsdl/"/>
+        <copy todir="${build.web.dir}/WEB-INF/wsdl/HotelReservation">
+            <fileset dir="${basedir}/${conf-dir}xml-resources/web-services/HotelReservation/wsdl/"/>
         </copy>
     </target>
-    <target name="wsimport-service-clean-NewWebServiceFromWSDL" depends="-init-project">
+    <target name="wsimport-service-clean-HotelReservation" depends="-init-project">
         <delete dir="${build.generated.sources.dir}/jax-ws/hotelreservationservices"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/service/NewWebServiceFromWSDL"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/service/HotelReservation"/>
     </target>
     <target name="wsimport-client-generate" depends="wsimport-client-BankService"/>
-    <target name="wsimport-service-generate" depends="wsimport-service-NewWebServiceFromWSDL"/>
+    <target name="wsimport-service-generate" depends="wsimport-service-HotelReservation"/>
 </project>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
   <services>
-    <service name="NewWebServiceFromWSDL">
-      <implementation-class>ws.NewWebServiceFromWSDL</implementation-class>
-      <wsdl-url>file:/Users/khannoori/NetBeansProjects/HotelReservationServicesSOAP/src/java/ws/HotelReservation.wsdl</wsdl-url>
+    <service name="HotelReservation">
+      <implementation-class>ws.HotelReservation</implementation-class>
+      <wsdl-url>file:/C:/Users/Jens/Desktop/SourceTree/02267webservices/HotelReservationServicesSOAP/src/java/ws/HotelReservation.wsdl</wsdl-url>
       <local-wsdl-file>HotelReservation.wsdl</local-wsdl-file>
       <service-name>HotelReservationService</service-name>
       <port-name>HotelReservationServicesBindingPort</port-name>
