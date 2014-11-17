@@ -2,5 +2,4 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="file:/Users/khannoori/NetBeansProjects/HotelReservationServicesSOAP/src/java/HotelReservationServices.wsdl" uri="src/conf/xml-resources/web-services/HotelReservationsService/wsdl/HotelReservationServices.wsdl"/>
     <system systemId="file:/Users/khannoori/NetBeansProjects/HotelReservationServicesSOAP/src/java/ws/HotelReservation.wsdl" uri="src/conf/xml-resources/web-services/NewWebServiceFromWSDL/wsdl/HotelReservation.wsdl"/>
-    <system systemId="file:/C:/Users/rasmus/Development/02267/HotelReservationServicesSOAP/src/java/ws/HotelReservation.wsdl" uri="src/conf/xml-resources/jaxb/HotelReservationWSDLBinding/HotelReservation.wsdl"/>
 </catalog>
