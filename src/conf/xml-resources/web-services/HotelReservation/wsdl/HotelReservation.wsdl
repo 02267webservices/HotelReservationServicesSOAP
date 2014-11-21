@@ -8,9 +8,9 @@
             <xsd:complexType name="CreditCardType">
                 <xsd:sequence>
                     <xsd:element name="name" type="xsd:string"></xsd:element>
-                    <xsd:element name="number" type="xsd:float"></xsd:element>
-                    <xsd:element name="expirationMonth" type="xsd:dateTime"></xsd:element>
-                    <xsd:element name="expirationYear" type="xsd:dateTime"></xsd:element>
+                    <xsd:element name="number" type="xsd:string"></xsd:element>
+                    <xsd:element name="expirationMonth" type="xsd:int"></xsd:element>
+                    <xsd:element name="expirationYear" type="xsd:int"></xsd:element>
                 </xsd:sequence>
             </xsd:complexType>
             <xsd:complexType name="HotelType">
@@ -18,23 +18,31 @@
                     <xsd:element name="name" type="xsd:string"></xsd:element>
                     <xsd:element name="address" type="xsd:string"></xsd:element>
                     <xsd:element name="bookingNumber" type="xsd:int"></xsd:element>
-                    <xsd:element name="priceForWholeStay" type="xsd:double"></xsd:element>
+                    <xsd:element name="priceForWholeStay" type="xsd:int"></xsd:element>
                     <xsd:element name="paymentGuarantee" type="xsd:boolean"></xsd:element>
                 </xsd:sequence>
             </xsd:complexType>
-            <xsd:complexType name="FaultType">
+            <xsd:complexType name="BookHotelFaultType">
                 <xsd:sequence>
+                    <xsd:element name="bookingNumber" type="xsd:int"></xsd:element>
                     <xsd:element name="creditCardInfo" type="tns:CreditCardType"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="CancelHotelFaultType">
+                <xsd:sequence>
+                    <xsd:element name="bookingNumber" type="xsd:int"></xsd:element>
                 </xsd:sequence>
             </xsd:complexType>
             <xsd:complexType name="HotelsType">
                 <xsd:sequence>
+                    <xsd:element name="name" type="xsd:string"></xsd:element>
                     <xsd:element name="hotels" type="tns:HotelType" maxOccurs="unbounded" minOccurs="0"></xsd:element>
                 </xsd:sequence>
             </xsd:complexType>
             <xsd:element name="creditCardElement" type="tns:CreditCardType"></xsd:element>
             <xsd:element name="hotelElement" type="tns:HotelType"></xsd:element>
-            <xsd:element name="faultElement" type="tns:FaultType"></xsd:element>
+            <xsd:element name="bookHotelFaultElement" type="tns:BookHotelFaultType"></xsd:element>
+            <xsd:element name="cancelHotelFaultElement" type="tns:CancelHotelFaultType"></xsd:element>
         </xsd:schema>
     </types>
     <message name="getHotelsRequest">
@@ -52,6 +60,9 @@
     <message name="bookHotelResponse">
         <part name="status" type="xsd:boolean"/>
     </message>
+    <message name="bookHotelFault">
+        <part name="fault" element="tns:bookHotelFaultElement"/>
+    </message>
     <message name="cancelHotelRequest">
         <part name="bookingNumber" type="xsd:int"/>
     </message>
@@ -59,7 +70,7 @@
         <part name="status" type="xsd:boolean"/>
     </message>
     <message name="cancelHotelFault">
-        <part name="part1" element="tns:faultElement"/>
+        <part name="fault" element="tns:cancelHotelFaultElement"/>
     </message>
     <portType name="HotelReservationServices">
         <operation name="getHotels">
@@ -69,6 +80,7 @@
         <operation name="bookHotel">
             <input name="bookHotelInput1" message="tns:bookHotelRequest"/>
             <output name="bookHotelOutput1" message="tns:bookHotelResponse"/>
+            <fault name="bookHotelFault1" message="tns:bookHotelFault"/>
         </operation>
         <operation name="cancelHotel">
             <input name="cancelHotelInput1" message="tns:cancelHotelRequest"/>
@@ -95,6 +107,9 @@
             <output name="bookHotelOutput1">
                 <soap:body use="literal" namespace="http://ws"/>
             </output>
+            <fault name="bookHotelFault1">
+                <soap:fault name="bookHotelFault1" use="literal"/>
+            </fault>
         </operation>
         <operation name="cancelHotel">
             <soap:operation/>
