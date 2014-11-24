@@ -15,7 +15,6 @@ import hotelreservationservices.HotelsType;
 import java.util.HashMap;
 import javax.jws.WebService;
 import javax.xml.datatype.XMLGregorianCalendar;
-import javax.xml.ws.WebServiceRef;
 
 @WebService(serviceName = "HotelReservationService", portName = "HotelReservationServicesBindingPort", endpointInterface = "hotelreservationservices.HotelReservationServices", targetNamespace = "http://HotelReservationServices", wsdlLocation = "WEB-INF/wsdl/HotelReservation/HotelReservation.wsdl")
 public class HotelReservation {
@@ -218,7 +217,7 @@ public class HotelReservation {
     
     // -------- FastMoney --------
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/fastmoney.imm.dtu.dk_8080/BankService.wsdl")
+    //@WebServiceRef(wsdlLocation = "WEB-INF/wsdl/fastmoney.imm.dtu.dk_8080/BankService.wsdl")
     private BankService service;
     
     private boolean chargeCreditCard(int group, CreditCardInfoType creditCardInfo, int amount, AccountType account) throws CreditCardFaultMessage {
