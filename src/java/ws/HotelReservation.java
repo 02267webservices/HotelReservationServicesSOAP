@@ -75,14 +75,14 @@ public class HotelReservation {
         }
 
         Booking booking = bookings.get(bookingNumber);
-        /*
+        
         if (booking.getBooked()) {
             BookHotelFaultType fault = new BookHotelFaultType();
             fault.setBookingNumber(bookingNumber);
             fault.setCreditCardInfo(creditCard);
             throw new BookHotelFault("Booking is already booked.", fault);
         }
-        */
+        
 
         if (booking.getHotel().getName().equalsIgnoreCase("Hotel that always succeed")) {
             booking.book();
@@ -152,13 +152,13 @@ public class HotelReservation {
             throw new CancelHotelFault("Booking was not booked.", fault);
         }
         
-        /*
+        
         if (booking.getCancelled()) {
             CancelHotelFaultType fault = new CancelHotelFaultType();
             fault.setBookingNumber(bookingNumber);
             throw new CancelHotelFault("Booking is already cancelled.", fault);
         }
-        */
+        
         
         if (booking.getHotel().getName().equalsIgnoreCase("Hotel that always succeed")) {
             booking.cancel();
